@@ -1,7 +1,7 @@
 import axios from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link ,useNavigate} from "react-router-dom";
-import { toast } from "react-toastify";
+// import { toast } from "react-toastify";
 
 function RegisterForm() {
   const [firstname, setFirstname] = useState("");
@@ -27,7 +27,7 @@ function RegisterForm() {
       );
 
       if (response.status === 201) {
-       toast.success('You are registered! Welcome');
+      //  toast.success('You are registered! Welcome');
         navigate("/login");
       }
     } catch (error) {
@@ -35,9 +35,15 @@ function RegisterForm() {
     }
   };
 
+  
+
+
+
   return (
     <>
-      <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
+    <div className=" flex  justify-center  my-5  min-w-[50%] ">
+                     
+      <div className=" flex flex-col justify-center min-h-full w-[30rem] px-6 py-12 lg:px-8 bg-gradient-to-r from-violet-500 to-fuchsia-500 bg-center rounded-3xl">
         <div className="sm:mx-auto sm:w-full sm:max-w-sm">
           <img
             className="mx-auto h-32 w-auto"
@@ -58,7 +64,7 @@ function RegisterForm() {
             <div>
               <label
                 htmlFor="email"
-                className="block text-sm font-medium leading-6 text-gray-900"
+                className="block text-l font-medium leading-6 text-gray-900 " 
               >
                 Firstname
               </label>
@@ -77,7 +83,7 @@ function RegisterForm() {
             <div>
               <label
                 htmlFor="Lastname"
-                className="block text-sm font-medium leading-6 text-gray-900"
+                className="block text-l font-medium leading-6 text-gray-900"
               >
                 Lastname
               </label>
@@ -96,7 +102,7 @@ function RegisterForm() {
             <div>
               <label
                htmlFor="username"
-                className="block text-sm font-medium leading-6 text-gray-900"
+                className="block text-l font-medium leading-6 text-gray-900"
               >
                 Username
               </label>
@@ -111,10 +117,11 @@ function RegisterForm() {
               </div>
             </div>
 
+              {/* email */}
             <div>
               <label
                 htmlFor="email"
-                className="block text-sm font-medium leading-6 text-gray-900"
+                className="block text-l font-medium leading-6 text-gray-900"
               >
                 Email address
               </label>
@@ -133,7 +140,7 @@ function RegisterForm() {
               <div className="flex items-center justify-between">
                 <label
                   htmlFor="password"
-                  className="block text-sm font-medium leading-6 text-gray-900"
+                  className="block text-l font-medium leading-6 text-gray-900"
                 >
                   Password
                 </label>
@@ -151,14 +158,14 @@ function RegisterForm() {
             </div>
 
             <div>
-            <Link to='/login'>
+  
               <button
                 type="submit"
                 className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
              >
                 Register
               </button>
-              </Link>
+              
             </div>
           </form>
           <p className='mt-2'>
@@ -168,6 +175,7 @@ function RegisterForm() {
           </Link>
         </p>
         </div>
+      </div>
       </div>
     </>
   );

@@ -39,9 +39,9 @@ const handleLogin = async (e) => {
 
     return (
       <>
-     
-        <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
-          <div className="sm:mx-auto sm:w-full sm:max-w-sm">
+     <div className=" flex  justify-center  my-5  min-w-[50%] ">
+        <div className="flex flex-col justify-center min-h-full w-[30rem] px-6 py-12 lg:px-8 bg-gradient-to-r from-[#e9e3db] to-[#eac39f] bg-center rounded-3xl  ">
+          <div className="sm:mx-auto sm:w-full sm:max-w-sm ">
             <img
               className="mx-auto h-32 w-auto"
               src="../src/assets/todofoto.png"
@@ -52,7 +52,7 @@ const handleLogin = async (e) => {
             </h2>
           </div>
           {error && <p className='text-red-500 mb-4'>{error}</p>}
-          <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
+          <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm  ">
             <form className="space-y-6" action="#" method="POST" onSubmit={handleLogin}>
               <div>
                 <label htmlFor="email" className="block text-sm font-medium leading-6 text-gray-900">
@@ -75,7 +75,7 @@ const handleLogin = async (e) => {
                     Password
                   </label>
                   <div className="text-sm">
-                    <a href="#" className="font-semibold text-indigo-600 hover:text-indigo-500">
+                    <a href="#" className="text-sm font-medium leading-6 text-gray-900  hover:text-blue-500">
                       Forgot password?
                     </a>
                   </div>
@@ -102,7 +102,7 @@ const handleLogin = async (e) => {
               </div>
             </form>
   
-            <p className="mt-10 text-center text-sm text-gray-500">
+            <p className="mt-10 text-center block text-sm font-medium leading-6 text-gray-900">
              Don't have Account?{' '}
       
       <Link to='/register'> <button
@@ -114,6 +114,7 @@ const handleLogin = async (e) => {
               </Link> 
             </p>
           </div>
+        </div>
         </div>
       </>
     )

@@ -19,19 +19,15 @@ const Navbar = () => {
   };
 
   return (
-    <div className=" flex  items-center justify-center flex-wrap my-5  min-w-[50%]">
-    <div className='flex flex-row justify-center w-[30rem] bg-indigo-600 p-6 text-white text-lg font-bold  shadow-xl shadow-black flex-wrap px-[20%] rounded-2xl py-2'>
-    <Link to='/'>
+    <div className=" flex  justify-center my-5 min-w-[40%]">
+    <div className='flex flex-row  justify-around bg-[#004c3f] text-[#ffcb65] text-lg font-bold shadow-xl shadow-black rounded-2xl py-2 min-w-[40%]'>
+      <Link to='/'>
       <h1>Home</h1>
     </Link>
-    <div className='flex items-center space-x-4 mx-20'>
+    <div className=' mx-20'>
       {isLoggedIn ? (
-        <div className='space-x-4'>
-          <Link to='/post' className='cursor-pointer hover:opacity-80'>
-            POST
-          </Link>
+        <div className=''>
           <button onClick={handleLogout}>LOGOUT</button>
-          <p className='text-sm'>Welcome {userData.firstName}</p>
         </div>
       ) : (
         <Link to='/login' className='cursor-pointer hover:opacity-80'>
@@ -39,8 +35,10 @@ const Navbar = () => {
         </Link>
       )}
     </div>
+    </div>
+
   </div>
-  </div>
+  
   )
 }
 
