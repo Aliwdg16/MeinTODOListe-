@@ -43,11 +43,11 @@ function RegisterForm() {
     <>
     <div className=" flex  justify-center  my-5  min-w-[50%] ">
                      
-      <div className=" flex flex-col justify-center min-h-full w-[30rem] px-6 py-12 lg:px-8 bg-gradient-to-r from-violet-500 to-fuchsia-500 bg-center rounded-3xl">
+      <div className=" flex flex-col justify-center min-h-full w-[30rem] px-6 py-12 lg:px-8 bg-gradient-to-r from-[#e9e3db] to-[#eac39f] bg-center rounded-3xl">
         <div className="sm:mx-auto sm:w-full sm:max-w-sm">
           <img
             className="mx-auto h-32 w-auto"
-            src="../src/assets/todofoto.png"
+            src="../public/todofoto.png"
             alt="Your Company"
           />
           <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
