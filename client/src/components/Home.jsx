@@ -175,7 +175,7 @@ if (error) {
       <ul className='list-item'>
         {tasks.map((task) => (
           <li key={task._id} className=" container flex flex-nowrap justify-between items-center mb-2 border-b-4 border-black ">
-            <input className=' h-[3rem] w-[3rem] px-2 py-2 mx-2 mb-2 rounded-full' type="checkbox"  checked={task.completed} onChange={() => toggleTask(task._id)} />
+            <input className=' h-[2rem] w-[2rem] px-2 py-2 mx-2 mb-2 rounded-full' type="checkbox"  checked={task.completed} onChange={() => toggleTask(task._id)} />
               {editTaskId === task._id ? (
               <input
                 className='flex-grow border-b-2 border-gray-400 bg-gray-200 outline-none focus:border-gray-700 mb-2  mr-2 py-2 px-3 shadow-md shadow-black rounded-lg'

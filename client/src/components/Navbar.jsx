@@ -24,7 +24,7 @@ const Navbar = () => {
       <Link to='/'>
       <h1>Home</h1>
     </Link>
-    <div className=' mx-20'>
+    <div className=''>
       {isLoggedIn ? (
         <div className=''>
           <button onClick={handleLogout}>LOGOUT</button>
