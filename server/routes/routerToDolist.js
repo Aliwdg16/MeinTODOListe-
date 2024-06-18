@@ -6,6 +6,7 @@ const listRouter = Router();
 
 listRouter
   .route("/")
+  // .get(verifyToken,Todolist.getAllTasksforlogged)
   .get(Todolist.getAllTasks)
   .post(verifyToken, Todolist.createTask);
 

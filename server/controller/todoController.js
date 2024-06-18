@@ -54,6 +54,12 @@ export const login = asyncHandler(async (req, res, next) => {
   res.send({ status: "you are login" });
 });
 
+//geet all user
+export const getalluser = asyncHandler(async (req, res, next) => {
+  const user = await User.find(req._id).populate("");
+  res.json(user);
+});
+
 //verify User
 export const getUser = asyncHandler(async (req, res, next) => {
   const user = await User.findById(req.uid);
@@ -78,7 +84,3 @@ export const logout = asyncHandler(async (req, res, next) => {
 
 // })
 
-// export const getAlluser= asyncHandler(async(req,res,next)=>{
-//   const getalluser =await User.find(req.uid);
-//   res.json(User);
-// })

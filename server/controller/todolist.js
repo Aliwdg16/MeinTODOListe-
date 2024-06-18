@@ -7,6 +7,15 @@ export const getAllTasks = asyncHandler(async(req,res,next)=>{const list =await 
     res.json(list)
 });
 
+
+
+// export const getAllTasksforlogged = asyncHandler(async (req, res, next) => { 
+//   const list = await ToDo.find({author:req.uid}).populate('author');
+// });
+
+
+
+
 export const getSingleTask = asyncHandler(async (req, res, next) => {
     const { id } = req.params;
   

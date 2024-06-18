@@ -10,6 +10,6 @@ routerToDO.get("/me",verifyToken, toDoController.getUser);
 routerToDO.post("/logout", toDoController.logout);
 // routerToDO.put("/update", toDoController.updateUser);
 // routerToDO.delete("/delete",toDoController.deleteProfiel)
-// routerToDO.get("/alluser",toDoController.getAlluser)
+routerToDO.get("/alluser",verifyToken,toDoController.getalluser)
 
 export default routerToDO;
