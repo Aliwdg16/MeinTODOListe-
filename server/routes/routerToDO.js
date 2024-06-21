@@ -1,7 +1,6 @@
 import { Router } from "express";
 import * as toDoController from '../controller/todoController.js'
 import verifyToken from "../middlewares/verifyToken.js";
-// import verifyToken from '../middlewares/verifyToken.js';
 
 const routerToDO = Router();
 routerToDO.post("/signup", toDoController.signUp);

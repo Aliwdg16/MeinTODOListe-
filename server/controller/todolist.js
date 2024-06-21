@@ -3,7 +3,9 @@ import asyncHandler from "../utils/asyncHandler.js"
 import ErrorResponse from "../utils/ErrorResponse.js"
 
 
-export const getAllTasks = asyncHandler(async(req,res,next)=>{const list =await ToDo.find().populate('author');
+export const getAllTasks = asyncHandler(async(req,res,next)=>{
+  console.log('req.uid:', req.uid);
+  const list =await ToDo.find({author:req.uid}).populate('author');
     res.json(list)
 });
 
@@ -13,7 +15,14 @@ export const getAllTasks = asyncHandler(async(req,res,next)=>{const list =await 
 //   const list = await ToDo.find({author:req.uid}).populate('author');
 // });
 
-
+// export const getAllTasks = asyncHandler(async (req, res, next) => {
+//   if (req.uid) {
+//     const list = await ToDo.find({author:req.uid}).populate('author');
+//     res.json(list)
+//   } else {
+   
+//   }
+// });
 
 
 export const getSingleTask = asyncHandler(async (req, res, next) => {

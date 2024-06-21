@@ -18,9 +18,10 @@ const [editTaskTitle, setEditTaskTitle] = useState('');
   useEffect(() => {
     const fetchTasks = async () => {
       try {
-        const response = await axios.get("http://localhost:8000/list/");
+        const token = localStorage.getItem('token');
+        const response = await axios.get(`http://localhost:8000/list/`,{headers:{'Authorization':`bearer${token}`}, withCredentials: true });
         setTasks(response.data);
-        // console.log(response.data);
+        console.log(response.data);
           setLoading(false);
         }
        catch (error) {
