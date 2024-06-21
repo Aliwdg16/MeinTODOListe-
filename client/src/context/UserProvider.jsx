@@ -12,7 +12,7 @@ export const AuthProvider = ({ children }) => {
 
   const checkUser = async () => {
     try {
-      const response = await axios.get('http://localhost:8000/user/me', {
+      const response = await axios.get('https://todoliste.onrender.com/user/me', {
         withCredentials: true,
       });
 
