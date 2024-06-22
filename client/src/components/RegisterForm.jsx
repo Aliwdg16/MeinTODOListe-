@@ -16,7 +16,7 @@ function RegisterForm() {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "https://todoliste.onrender.com/user/signup",
+        `${import.meta.env.VITE_DEPLOY_URL}/user/signup`,
         {
              firstname,
              lastname,

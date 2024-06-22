@@ -7,7 +7,7 @@ const Navbar = () => {
   const handleLogout = async () => {
       try {
         await axios.post(
-          "https://todoliste.onrender.com/user/logout",
+          `${import.meta.env.VITE_DEPLOY_URL}/user/logout`,
           {},
           { withCredentials: true }
         );

@@ -4,7 +4,7 @@ import ErrorResponse from "../utils/ErrorResponse.js"
 
 
 export const getAllTasks = asyncHandler(async(req,res,next)=>{
-  console.log('req.uid:', req.uid);
+  
   const list =await ToDo.find({author:req.uid}).populate('author');
     res.json(list)
 });
