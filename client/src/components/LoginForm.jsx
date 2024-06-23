@@ -10,14 +10,15 @@ const [password,setPassword]=useState('');
 const [error,setError] = useState('');
 const { isLoggedIn, setIsLoggedIn, checkUser } = useAuth();
 
-
+const deploy=import.meta.env.VITE_DEPLOY_URL;
+// ${deploy}
 const navigate = useNavigate();
 
 const handleLogin = async (e) => {
   e.preventDefault();
   try {
     const response = await axios.post(
-      `${import.meta.env.VITE_DEPLOY_URL}/user/login`,
+      `${deploy}/user/login`,
       {
         email,
         password,

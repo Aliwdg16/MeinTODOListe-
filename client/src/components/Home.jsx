@@ -15,13 +15,21 @@ const navigate = useNavigate();
 const [editTaskId, setEditTaskId] = useState(null);
 const [editTaskTitle, setEditTaskTitle] = useState('');
 
+// ${deploy}
   useEffect(() => {
     const fetchTasks = async () => {
+      const deploy=import.meta.env.VITE_DEPLOY_URL;
       try {
         const token = localStorage.getItem('token');
-        const response = await axios.get(`${import.meta.env.VITE_DEPLOY_URL}/list/`,{headers:{'Authorization':`bearer${token}`}, withCredentials: true });
+        // console.log(`https://todoliste.onrender.com/list/66772262f43b516fa9bbb43a`);
+        // const response = await axios.get(`${deploy}/list/`,{headers:{'Authorization':`bearer${token}`}, withCredentials: true });
+        // const response = await axios.get('https://todoliste.onrender.com/list/',{headers:{'Authorization':`bearer${token}`}, withCredentials: true });
+        const response = await axios.get(`${deploy}/list/`,{headers:{'Authorization':`bearer${token}`}, withCredentials: true });
+      
         setTasks(response.data);
-        console.log(response.data);
+        //  console.log(response.data);
+        // console.log(deploy);
+        
           setLoading(false);
         }
        catch (error) {
@@ -42,7 +50,7 @@ const [editTaskTitle, setEditTaskTitle] = useState('');
   const addTask = async () => {
    
     try {
-      const response = await axios.post(`${import.meta.env.VITE_DEPLOY_URL}/list/`, {
+      const response = await axios.post(`${deploy}/list/`, {
         title:newTask},{ withCredentials: true }
       );
       setTasks([...tasks, response.data]);
@@ -57,7 +65,7 @@ const [editTaskTitle, setEditTaskTitle] = useState('');
 
   // const addTask = useCallback(async () => {
   //   try {
-  //     const response = await axios.post(`${import.meta.env.VITE_DEPLOY_URL}/list/`, {
+  //     const response = await axios.post(`${deploy}/list/`, {
   //       title: newTask
   //     }, { withCredentials: true });
   //     setTasks([...tasks, response.data]);
@@ -79,7 +87,7 @@ const [editTaskTitle, setEditTaskTitle] = useState('');
           task._id === _id? {...task, completed:!task.completed } : task
         )
       );
-      await axios.put(`${import.meta.env.VITE_DEPLOY_URL}/list/${_id}`, {
+      await axios.put(`${deploy}/list/${_id}`, {
        ...task,
         completed:!task.completed
       }, { withCredentials: true });
@@ -95,7 +103,7 @@ const [editTaskTitle, setEditTaskTitle] = useState('');
 //remove task
 const removeTask = async (_id) => {
   try {
-    await axios.delete(`${import.meta.env.VITE_DEPLOY_URL}/list/${_id}`, { withCredentials: true });
+    await axios.delete(`${deploy}/list/${_id}`, { withCredentials: true });
     setTasks(tasks.filter((task) => task._id !== _id));
   } catch (error) {
 console.error('Error removing task', error);
@@ -110,7 +118,7 @@ console.error('Error removing task', error);
 
 // const updateTask = async (_id, newtitle) => { 
 //   try {
-//     const response = await axios.put(`${import.meta.env.VITE_DEPLOY_URL}/list/${_id}`, {title:newtitle,} , { withCredentials: true });
+//     const response = await axios.put(`${deploy}/list/${_id}`, {title:newtitle,} , { withCredentials: true });
 //     setTasks(
 //       tasks.map((task) =>
 //         task._id === _id? { ...task, title: newtitle } : task
@@ -125,7 +133,7 @@ console.error('Error removing task', error);
 
 const updateTask = async (_id) => { 
   try {
-    const response = await axios.put(`${import.meta.env.VITE_DEPLOY_URL}/list/${_id}`, { title: editTaskTitle }, { withCredentials: true });
+    const response = await axios.put(`${deploy}/list/${_id}`, { title: editTaskTitle }, { withCredentials: true });
     setTasks(
       tasks.map((task) =>
         task._id === _id ? { ...task, title: editTaskTitle } : task

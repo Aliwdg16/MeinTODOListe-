@@ -11,12 +11,13 @@ function RegisterForm() {
   const [password, setPassword] = useState("");
 
   const navigate = useNavigate();
-
+  
   const handleRegister = async (e) => {
     e.preventDefault();
+    const deploy=import.meta.env.VITE_DEPLOY_URL;
     try {
       const response = await axios.post(
-        `${import.meta.env.VITE_DEPLOY_URL}/user/signup`,
+        `${deploy}/user/signup`,
         {
              firstname,
              lastname,

@@ -5,9 +5,11 @@ const Navbar = () => {
   const { isLoggedIn, setIsLoggedIn, userData } = useAuth();
 
   const handleLogout = async () => {
+    const deploy=import.meta.env.VITE_DEPLOY_URL;
+    // ${deploy}
       try {
         await axios.post(
-          `${import.meta.env.VITE_DEPLOY_URL}/user/logout`,
+          `${deploy}/user/logout`,
           {},
           { withCredentials: true }
         );

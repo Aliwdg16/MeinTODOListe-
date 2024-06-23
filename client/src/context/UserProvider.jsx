@@ -3,16 +3,15 @@ import axios from 'axios';
 import Cookies from 'js-cookie';
 
 const AuthContext = createContext();
-
 export const useAuth = () => useContext(AuthContext);
 
 export const AuthProvider = ({ children }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userData, setUserData] = useState({});
-
+  const deploy=import.meta.env.VITE_DEPLOY_URL;
   const checkUser = async () => {
     try {
-      const response = await axios.get(`${import.meta.env.VITE_DEPLOY_URL}/user/me`, {
+      const response = await axios.get(`${deploy}/user/me`, {
         withCredentials: true,
       });
 
