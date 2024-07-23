@@ -9,6 +9,7 @@ export const AuthProvider = ({ children }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userData, setUserData] = useState({});
   const deploy=import.meta.env.VITE_DEPLOY_URL;
+  
   const checkUser = async () => {
     try {
       const response = await axios.get(`${deploy}/user/me`, {

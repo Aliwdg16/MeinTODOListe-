@@ -49,8 +49,14 @@ export const login = asyncHandler(async (req, res, next) => {
   const token = jwt.sign({ uid: existUser._id }, process.env.JWT_SECRET, {
     expiresIn: "30m",
   });
+  res.cookie("token", token, {
+    maxAge: 86400000,
+     httpOnly: true,
+    secure:true,
+    sameSite: "none"
+  });
 
-  res.cookie("token", token, { maxAge: 1800000 }); // 30mn
+  // res.cookie("token", token, { maxAge: 1800000 }); // 30mn
   res.send({ status: "you are login" });
 });
 
@@ -68,7 +74,12 @@ export const getUser = asyncHandler(async (req, res, next) => {
 
 // LOGOUT
 export const logout = asyncHandler(async (req, res, next) => {
-  res.clearCookie("token");
+  res.clearCookie("token", {
+    maxAge: 1800000,
+    httpOnly: true,
+    secure: true,
+    sameSite: "none",
+  });
   res.send({ status: "you are logout" });
 });
 

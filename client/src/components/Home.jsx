@@ -19,13 +19,13 @@ const [editTaskTitle, setEditTaskTitle] = useState('');
   useEffect(() => {
     const fetchTasks = async () => {
       const deploy=import.meta.env.VITE_DEPLOY_URL;
+      console.log(deploy);
       try {
         const token = localStorage.getItem('token');
         // console.log(`https://todoliste.onrender.com/list/66772262f43b516fa9bbb43a`);
         // const response = await axios.get(`${deploy}/list/`,{headers:{'Authorization':`bearer${token}`}, withCredentials: true });
         // const response = await axios.get('https://todoliste.onrender.com/list/',{headers:{'Authorization':`bearer${token}`}, withCredentials: true });
         const response = await axios.get(`${deploy}/list/`,{headers:{'Authorization':`bearer${token}`}, withCredentials: true });
-      
         setTasks(response.data);
         //  console.log(response.data);
         // console.log(deploy);
