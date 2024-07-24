@@ -14,11 +14,11 @@ const Home = () => {
 const navigate = useNavigate(); 
 const [editTaskId, setEditTaskId] = useState(null);
 const [editTaskTitle, setEditTaskTitle] = useState('');
-
+const deploy=import.meta.env.VITE_DEPLOY_URL;
 // ${deploy}
   useEffect(() => {
     const fetchTasks = async () => {
-      const deploy=import.meta.env.VITE_DEPLOY_URL;
+     
       console.log(deploy);
       try {
         const token = localStorage.getItem('token');
@@ -46,21 +46,37 @@ const [editTaskTitle, setEditTaskTitle] = useState('');
   // useEffect(() => {
     
   // Add a new task
-  
+
   const addTask = async () => {
-   
+
     try {
       const response = await axios.post(`${deploy}/list/`, {
         title:newTask},{ withCredentials: true }
       );
       setTasks([...tasks, response.data]);
-      setNewTask('');
+      setNewTask(''); // Clear the input field
       navigate('/');
     } catch (error) {
       
       console.error('Error adding task', error);
     }
   };
+
+  
+  // const addTask = async () => {
+   
+  //   try {
+  //     const response = await axios.post(`${deploy}/list/`, {
+  //       title:newTask},{ withCredentials: true }
+  //     );
+  //     setTasks([...tasks, response.data]);
+  //     setNewTask('');
+  //     navigate('/');
+  //   } catch (error) {
+      
+  //     console.error('Error adding task', error);
+  //   }
+  // };
 
 
   // const addTask = useCallback(async () => {
