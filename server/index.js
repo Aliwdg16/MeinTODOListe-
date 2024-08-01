@@ -20,7 +20,7 @@ app.use(express.json());
 app.use(cookieParser()); 
 
 app.use(cors({ origin:['https://todolisthassan.netlify.app','http://localhost:5173','https://todoliste.onrender.com'] ,
-    methods: ["GET", "POST", "PUT", "DELETE"],
+    // methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true }));
 
 //routes
