@@ -5,7 +5,6 @@ import { format } from "date-fns";
 
 
 const Home = () => {
-  const deploy = import.meta.env.VITE_DEPLOY_URL;
   const [tasks, setTasks] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
@@ -14,11 +13,12 @@ const Home = () => {
   const navigate = useNavigate();
   const [editTaskId, setEditTaskId] = useState(null);
   const [editTaskTitle, setEditTaskTitle] = useState("");
+  const deploy = import.meta.env.VITE_DEPLOY_URL;
   
   // ${deploy}
   useEffect(() => {
     const fetchTasks = async () => {
-      console.log(deploy);
+      // console.log(deploy);
       try {
         const token = localStorage.getItem("token");
         // console.log(`https://todoliste.onrender.com/list/66772262f43b516fa9bbb43a`);
@@ -36,7 +36,7 @@ const Home = () => {
       } catch (error) {
         setLoading(false);
         setError(true);
-        console.log(error);
+        // console.log(error);
       }
     };
     fetchTasks();
@@ -46,7 +46,8 @@ const Home = () => {
 
   // Add a new task
 
-  const addTask = async () => {
+  const addTask = async (e) => {
+    e.preventDefault();
     try {
       const response = await axios.post(
         `${deploy}/list/`,
@@ -181,7 +182,7 @@ const Home = () => {
       <h1 className="text-center text-3xl font-bold text-[#004c3f] mb-4 min-w-[50%]">
         Todo List
       </h1>
-      <div className="flex mb-4">
+      <form onSubmit={addTask} className="flex mb-4">
         <input
           className="flex-grow border-b-2 border-gray-400 outline-none focus:border-gray-700 mr-2 py-2 px-3 bg-[#004c3f] p-6 text-[#ffcb65] shadow-md shadow-black rounded-lg"
           type="text"
@@ -196,7 +197,7 @@ const Home = () => {
         >
           Add
         </button>
-      </div>
+      </form>
 
       <ul className="list-item">
         {tasks.map((task) => (
@@ -224,6 +225,7 @@ const Home = () => {
               </span>
             )}
             {editTaskId === task._id ? (
+              
               <button
                 className="bg-green-500 text-gray-900  px-4 py-2 rounded-md hover:bg-green-200 font-semibold mb-2 "
                 onClick={() => updateTask(task._id)}
