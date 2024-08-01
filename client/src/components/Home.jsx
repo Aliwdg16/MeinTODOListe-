@@ -4,8 +4,8 @@ import { useNavigate } from "react-router";
 import { format } from "date-fns";
 
 
-const deploy = import.meta.env.VITE_DEPLOY_URL;
 const Home = () => {
+  const deploy = import.meta.env.VITE_DEPLOY_URL;
   const [tasks, setTasks] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
